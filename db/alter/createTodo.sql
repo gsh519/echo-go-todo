@@ -1,0 +1,1 @@
+CREATE TABLE `testdb`.`todos` (`todo_id` INT NOT NULL AUTO_INCREMENT , `content` VARCHAR(1000) NOT NULL , `is_done` BOOLEAN NOT NULL , `created_at` TIMESTAMP NOT NULL , `updated_at` TIMESTAMP NOT NULL , `deleted_flag` BOOLEAN NOT NULL , PRIMARY KEY (`todo_id`)) ENGINE = InnoDB;
