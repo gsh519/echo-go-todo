@@ -1,10 +1,10 @@
 # TODO API一覧
-- 一覧取得
-- 登録
-- 更新
-- 完了
-- 削除
-- 完了一覧
+- 一覧取得 /todo
+- 登録 /todo
+- 更新 /todo/:id
+- 完了 /todo/:id/done
+- 削除 /todo/:id
+- 完了一覧 /todo/done
 
 **todosテーブル**
 todo_id int
