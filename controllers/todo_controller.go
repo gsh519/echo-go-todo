@@ -54,15 +54,21 @@ func (tc *TodoController) CreateTodoHandler(e *echo.Echo) echo.HandlerFunc {
 	}
 }
 
-func (tc *TodoController) UpdateTodoHandler() echo.HandlerFunc {
+func (tc *TodoController) UpdateTodoHandler(e *echo.Echo) echo.HandlerFunc {
+	e.Validator = &validators.Validator{Validator: validator.New()}
+
 	return func(c echo.Context) error {
 		id, _ := strconv.Atoi(c.Param("id"))
-		req := new(requests.UpdateTodoRequest)
-		if err := c.Bind(req); err != nil {
+		payload := new(requests.UpdateTodoRequest)
+		if err := c.Bind(payload); err != nil {
 			return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 		}
 
-		err := tc.service.UpdateTodoService(id, req)
+		if err := c.Validate(payload); err != nil {
+			return echo.NewHTTPError(http.StatusUnprocessableEntity, err.Error())
+		}
+
+		err := tc.service.UpdateTodoService(id, payload)
 		if err != nil {
 			return echo.NewHTTPError(http.StatusInternalServerError, err.Error())
 		}
