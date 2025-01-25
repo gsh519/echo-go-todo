@@ -13,3 +13,14 @@ is_done boolean
 created_at datetime
 updated_at datetime
 deleted_flg boolean
+
+## Golang, Echo疑問
+- 例外時NewHttpErrorで返すべき？
+→ NewHttpErrorで返すとHttpErrorHandlerにエラーが渡される。HttpErrorHandlerに独自のエラーハンドリングを設定しておくとエラー処理を統一することができるので便利
+- ポインタの概念がよくわからない
+- 例外処理修正
+
+## 課題
+- 更新もバリデーションする
+- エラーハンドリング
+- logging実装

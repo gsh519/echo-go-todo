@@ -32,7 +32,7 @@ func main() {
 	e := echo.New()
 
 	e.GET("/todo", con.FetchTodoHandler())
-	e.POST("/todo", con.CreateTodoHandler())
+	e.POST("/todo", con.CreateTodoHandler(e))
 	e.PUT("/todo/:id", con.UpdateTodoHandler())
 	e.PUT("/todo/:id/done", con.DoneTodoHandler())
 	e.DELETE("/todo/:id", con.DeleteTotoHandler())
