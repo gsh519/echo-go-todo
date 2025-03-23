@@ -31,6 +31,8 @@ func main() {
 
 	e := echo.New()
 
+	os.Create("text.txt")
+
 	e.GET("/todo", con.FetchTodoHandler())
 	e.POST("/todo", con.CreateTodoHandler(e))
 	e.PUT("/todo/:id", con.UpdateTodoHandler(e))
